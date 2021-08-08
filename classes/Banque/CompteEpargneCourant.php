@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Banque;
+
 class CompteEpargneCourant extends CompteEpargne
 {
     private $decouvert;

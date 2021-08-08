@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Banque;
+
 /**
  * Compte bancaire (hérite de Compte)
  */
