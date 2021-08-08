@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Objet compte bancaire
  */
-class Compte
+abstract class Compte
 {
     // Propriétés
     /**
@@ -17,10 +18,8 @@ class Compte
      *
      * @var float
      */
-    private float $solde;
-
-    // Constantes
-    const TAUX_INTERETS= 5;
+    // 'protected' === 'private' avec la prise en compte de l'héritage
+    protected float $solde;
 
     // Méthodes
     /**
@@ -35,7 +34,7 @@ class Compte
         $this->titulaire = $nom;
         
         // On attribue le montant à la propriété solde
-        $this->solde= $montant + ($montant * self::TAUX_INTERETS/100);
+        $this->solde= $montant;
     }
 
     /**
@@ -137,23 +136,5 @@ class Compte
         } else {
             echo "Montant invalide ou solde insuffisant";
         }
-        echo $this->decouvert();
     }
-
-    /**
-     * Verifie si le compte est négatif ou pas
-     *
-     * @return string
-     */
-    private function decouvert()
-    {
-        if($this->solde < 0) {
-            return "Vous êtes à découvert";
-        } else {
-            return "Vous avez $this->solde €";
-        }
-    }
-
-
-
 }

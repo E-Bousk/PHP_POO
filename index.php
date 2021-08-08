@@ -1,40 +1,37 @@
 <?php
 require_once 'classes/Compte.php';
+require_once 'classes/CompteCourant.php';
+require_once 'classes/CompteEpargne.php';
+require_once 'classes/CompteEpargneCourant.php';
 
 // On instancie le compte
-$compte1= new Compte('Casimir', 500);
+$compteCourant= new CompteCourant('Casimir', 500); // 3eme argument optionnel (montant découvert = 200 par défaut )
+$compteCourant= new CompteCourant('Casimir', 500, 300);
+// $compteCourant->setDecouvert(800);
+// $compteCourant->retirer(800);
+$compteCourant->setTitulaire('Polux');
+$compteCourant->retirer(700);
+var_dump($compteCourant);
 
-// $compte1->setSolde(200);
+echo('<hr>');
 
-// On écrit dans la propriété titulaire
-// $compte1->titulaire= "Casimir";
+$compteEpargne= new CompteEpargne('Casimir', 500); // 3eme argument optionnel (taux d'intérêt = 2.2 par défaut)
+$compteEpargne= new CompteEpargne('Casimir', 500, 3.2);
+var_dump($compteEpargne);
+echo('-------------------- <br>');
+$compteEpargne->verserInterets();
+$compteEpargne->retirer(600);
+var_dump($compteEpargne);
 
-// On écrit dans la propriété solde
-// $compte1->solde= 500;
 
-// On dépose 100 euro
-$compte1->deposer(100);
+echo('<hr>');
 
-echo $compte1->getTitulaire();
+$compteEpargneCourant= new CompteEpargneCourant('Casimir', 500); // 3eme et 4eme argument optionnels (taux d'intérêt = 2.2 par défaut)
+$compteEpargneCourant= new CompteEpargneCourant('Casimir', 500, 3.2, 400);
+var_dump($compteEpargneCourant);
+echo('-------------------- <br>');
+$compteEpargneCourant->verserInterets();
+$compteEpargneCourant->retirer(600);
+var_dump($compteEpargneCourant);
 
-$compte1->setTitulaire("");
-
-?>
-<p><?= $compte1->voirSolde(); ?></p>
-<?php
-
-$compte1->retirer(500);
-
-var_dump($compte1);
-
-echo "Le taux d'intéret du compte est : ". Compte::TAUX_INTERETS."% <br>";
-
-echo $compte1; // on affiche sans erreur grâce à la méthode '__toString'
-
-// $compte2= new Compte('Polux');
-
-// // $compte2->titulaire= "Polux";
-
-// // $compte2->solde= 389.25;
-
-// var_dump($compte2);
+echo('<hr>');
