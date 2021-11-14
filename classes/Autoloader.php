@@ -29,7 +29,7 @@ class Autoloader
         // On concatène le tout avec le path (avec « __DIR__ ») et l'extension « .php » pour charger le fichier
         $fichier= __DIR__ . '/' . $class . '.php';
 
-        // On verifie si e fichier existe
+        // On verifie si le fichier existe avant de faire un 'require'
         if (file_exists($fichier)) {
             require_once $fichier;
         }

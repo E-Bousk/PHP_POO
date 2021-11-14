@@ -16,5 +16,4 @@ class Compte
         $this->prenom= $prenom;
         $this->ville= $ville;
     }
-    
 }

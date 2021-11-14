@@ -19,7 +19,7 @@ class CompteEpargneCourant extends CompteEpargne
      */
     public function __construct(CompteClient $compte, float $montant, float $taux = 2.2, int $decouvert = 200)
     {
-        // On transfère les informations nécessaires au constructeur de 'Compte'
+        // On transfère les informations nécessaires au constructeur de 'CompteEpargne' (classe mère)
         parent::__construct($compte, $montant, $taux);
 
         $this->decouvert = $decouvert;
