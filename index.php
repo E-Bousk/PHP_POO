@@ -1,48 +1,59 @@
 <?php
 
 use App\Autoloader;
-use App\Client\Compte as CompteClient;
-use App\banque\{CompteCourant, CompteEpargne, CompteEpargneCourant};
+use App\Models\AnnoncesModel;
+use App\Models\UsersModel;
 
 require_once 'vendor/Autoload.php';
-require_once 'classes/Autoloader.php';
+require_once 'Autoloader.php';
 Autoloader::register();
 
-// // $client= new \App\Client\Compte;
-$client= new CompteClient('Casimir', 'Polux', 'Toulouse');
-dump($client);
+// $model = new AnnoncesModel;
+/////////////////////////////////////////////////////////////////
+// $annonces= $model->findall();
+// dump($annonces);
+/////////////////////////////////////////////////////////////////
+// $annonces= $model->findBy(['actif' => 1]);
+// dump($annonces);
+/////////////////////////////////////////////////////////////////
+// $annonces= $model->find(2);
+// dump($annonces);
+/////////////////////////////////////////////////////////////////
+// $annonce = $model->setTitre('Nouvelle annonce 2')
+//                 ->setDescription('Nouvelle description 2')
+//                 ->setActif(0)
+// ;
+// $model->create($annonce);
+// var_dump($annonce);
+/////////////////////////////////////////////////////////////////
+// Tableau récupéré avec un POST par exemple
+// $donnees = [
+//     'titre' => 'Ajout par hydratation',
+//     'description' => 'On insert par une méthode d\'hydratation',
+//     'actif' => 1,
+// ];
+// dump($donnees);
+// $annonce = $model->hydrate($donnees);
+// $model->create($annonce);
+// var_dump($annonce);
+/////////////////////////////////////////////////////////////////
+// Tableau récupéré avec un formulaire par exemple
+// $donnees = [
+//     'titre' => 'Annonce modifiée',
+//     'description' => 'On modifie encore par la méthode UPDATE',
+//     'actif' => 0
+// ];
+// $annonce = $model->hydrate($donnees);
+// $model->update(11, $annonce);
+// var_dump($annonce);
+/////////////////////////////////////////////////////////////////
+// $model->delete(13);
+/////////////////////////////////////////////////////////////////
 
-echo '<hr>';
+$model = new UsersModel;
+// var_dump($model);
 
-// On instancie le compte
-// $compteCourant= new CompteCourant('Casimir', 500); // 3eme argument optionnel (montant découvert = 200 par défaut )
-$compteCourant= new CompteCourant($client, 500, 300);
-// // $compteCourant->setDecouvert(800);
-// // $compteCourant->retirer(800);
-// $compteCourant->setTitulaire('Polux');
-// $compteCourant->retirer(700);
-dump($compteCourant);
-
-echo '<hr>';
-
-// $compteEpargne= new CompteEpargne('Casimir', 500); // 3eme argument optionnel (taux d'intérêt = 2.2 par défaut)
-$compteEpargne= new CompteEpargne($client, 500, 3.2);
-// dump($compteEpargne);
-// echo '-------------------- <br>';
-// $compteEpargne->verserInterets();
-// $compteEpargne->retirer(600);
-dump($compteEpargne);
-
-
-echo '<hr>';
-
-// $compteEpargneCourant= new CompteEpargneCourant('Casimir', 500); // 3eme et 4eme argument optionnels (taux d'intérêt = 2.2 par défaut)
-$compteEpargneCourant= new CompteEpargneCourant($client, 500, 3.2, 400);
-// dump($compteEpargneCourant);
-// echo '-------------------- <br>';
-// $compteEpargneCourant->verserInterets();
-// $compteEpargneCourant->retirer(600);
-dump($compteEpargneCourant);
-
-echo '<hr>';
-
+$user = $model->setEmail('email@email.com')
+            ->setPassword(password_hash('root', PASSWORD_ARGON2I))
+;
+$model->create($user);
