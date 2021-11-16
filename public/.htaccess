@@ -1,0 +1,8 @@
+# On démarre le moteur de réécriture
+RewriteEngine On
+
+# On réécrit l'URL ($1 correspond au 1er groupe de réécriture)
+# exemple : http://domaine/controleur/methode/paramètres
+# dans le navigateur: http://mes-annonces.test/annonces/details/blablabla
+# avant réécriture avec .htaccess : http://mes-annonces.test/index.php?p=annonces/details/blablabla
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1

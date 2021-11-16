@@ -4,7 +4,7 @@ use App\Autoloader;
 use App\Models\AnnoncesModel;
 use App\Models\UsersModel;
 
-require_once 'vendor/Autoload.php';
+require_once '../vendor/Autoload.php';
 require_once 'Autoloader.php';
 Autoloader::register();
 
@@ -53,7 +53,12 @@ Autoloader::register();
 $model = new UsersModel;
 // var_dump($model);
 
-$user = $model->setEmail('email@email.com')
-            ->setPassword(password_hash('root', PASSWORD_ARGON2I))
-;
-$model->create($user);
+// $user = $model->setEmail('email@email.com')
+// ->setPassword(password_hash('root', PASSWORD_ARGON2I))
+// ;
+// $model->create($user);
+
+// $model->delete(3);
+
+$users= $model->findall();
+dump($users);
