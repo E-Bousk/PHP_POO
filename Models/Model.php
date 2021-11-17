@@ -20,7 +20,7 @@ Class Model extends Db
     public function findAll()
     {
         $query = $this->requete('SELECT * FROM ' . $this->table);
-        dump($query);
+        // dump($query);
         return $query->fetchAll();
     }
 

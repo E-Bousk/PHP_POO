@@ -55,7 +55,7 @@ class Main
             // on vérifie que la méthode existe dans cette classe, sinon 404
             if (method_exists($controller, $method)) {
                 // On vérifie s'il reste des paramètres pour les passer à la méthode
-                (isset($params[0])) ? $controller->$method($params) : $controller->$method();
+                (isset($params[0])) ? call_user_func_array([$controller, $method], $params) : $controller->$method();
             } else {
                 http_response_code(404);
                 echo "La page recherchée n'existe pas";

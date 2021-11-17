@@ -29,8 +29,13 @@ class Db extends PDO
 
             // Permet de faire toutes les transitions sur de l' UTF8
             $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8');
-            // Permet d'avoir un tableau associatif lorsque l'on fait un FETCH ou un FETCH ALL ('nom de colonne' => 'valeur')
-            $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            // FETCH_ASSOC : Permet d'avoir un tableau associatif ('nom de colonne' => 'valeur') lorsque l'on fait un FETCH ou un FETCH ALL
+            // $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            // FETCH_OBJ : Permet d'avoir des objets
+            $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+            
             // (definit le mode de transfert d'erreur) Déclenche une exception lors d'erreur
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
