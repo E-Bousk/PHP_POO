@@ -14,8 +14,6 @@ Class Model extends Db
 
     /**
      * Sélectionne tous les enregistrements d'une table
-     *
-     * @return array Tableau des enregistrements trouvés
      */
     public function findAll()
     {
@@ -28,7 +26,6 @@ Class Model extends Db
      * Sélectionne un enregistrement suivant son ID
      *
      * @param integer $id ID de l'enregistrement
-     * @return array Tableau contenant l'enregistrement trouvé
      */
     public function find(int $id)
     {
@@ -40,7 +37,6 @@ Class Model extends Db
      * Sélectionne plusieurs enregistrements suivant un tableau de critères
      *
      * @param array $criteres Tableau de critères
-     * @return array Tableau des enregistrements trouvés
      */
     public function findBy(array $criteres)
     {
@@ -69,11 +65,8 @@ Class Model extends Db
 
     /**
      * Insert un enregistrement suivant un tableau de données
-     *
-     * @param Model $model Objet à créer
-     * @return bool
      */
-    public function create(Model $model)
+    public function create()
     {
         // exemple : INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
 
@@ -81,10 +74,9 @@ Class Model extends Db
         $questionMarks = [];
         $valeurs = [];
         
-        // var_dump($model);
-
+        // var_dump($this);
         // On boucle pour éclater le tableau
-        foreach($model as $champ => $valeur) {
+        foreach($this as $champ => $valeur) {
             if($valeur !== null && $champ !== "db" && $champ !== "table") {
                 $champs[] = $champ;
                 $valeurs[] = $valeur;
@@ -111,12 +103,8 @@ Class Model extends Db
 
     /**
      * Met à jour un enregistrement suivant un tableau de données
-     *
-     * @param integer $id ID de l'enregistrement à modifier
-     * @param Model $model Objet à modifier
-     * @return bool
      */
-    public function update(int $id, Model $model)
+    public function update()
     {
         // exemple : UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id = ?
 
@@ -124,13 +112,13 @@ Class Model extends Db
         $valeurs = [];
         
         // On boucle pour éclater le tableau
-        foreach($model as $champ => $valeur) {
+        foreach($this as $champ => $valeur) {
             if($valeur !== null && $champ !== "db" && $champ !== "table") {
                 $champs[] = "$champ = ?";
                 $valeurs[] = $valeur;
             }
         }
-        $valeurs[] = $id;
+        $valeurs[] = $this->id;
         // dump($champs);
         // dump($valeurs);
 
@@ -148,7 +136,6 @@ Class Model extends Db
      * Supprime un enregistrement
      *
      * @param integer $id iD de l'enregistrment à supprimer
-     * @return bool
      */
     public function delete(int $id)
     {
@@ -160,10 +147,10 @@ Class Model extends Db
     /**
      * Hydratation des données
      *
-     * @param array $donnees Tableau associatif des données
+     * @param array $donnees Données (objets ou tableau)
      * @return self Retourne l'objet hydraté
      */
-    public function hydrate(array $donnees)
+    public function hydrate($donnees)
     {
         // dump($donnees);
         foreach($donnees as $key => $value) {
@@ -187,7 +174,6 @@ Class Model extends Db
      *
      * @param string $sql Requête SQL à exécuter
      * @param array|null $attributs Attributs à ajouter à la requête
-     * @return PDOStatement|false
      */
     public function requete(string $sql, array $attributs = null)
     {

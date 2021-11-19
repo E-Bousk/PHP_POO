@@ -15,6 +15,29 @@ class UsersModel extends Model
     }
 
     /**
+     * Sélectionne un USER suivant son E-MAIL
+     *
+     * @param string $email Email de l'utilisateur à rechercher
+     */
+    public function findOneByEmail(string $email)
+    {
+        return $this->requete("SELECT * FROM {$this->table} WHERE email = ?", [$email])->fetch();
+    }
+
+    /**
+     * Crée la SESSION de l'utilisateur
+     * 
+     * @return void
+     */
+    public function setSession()
+    {
+        $_SESSION['user'] = [
+            'id'  => $this->id,
+            'email' => $this->email
+        ];
+    }
+
+    /**
      * Get the value of id
      */ 
     public function getId()

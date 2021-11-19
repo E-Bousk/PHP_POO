@@ -31,8 +31,8 @@ class Form
             if (!isset($form[$champ]) || empty($form[$champ])) {
                 return false;
             }
-            return true;
         }
+        return true;
     }
 
     /**
@@ -89,6 +89,13 @@ class Form
      */
     public function endForm(): self
     {
+        // // EXEMPLE de token : On crée un token
+        // $token = md5(uniqid());
+        // // On l'ajoute dans notre formulaire
+        // $this->formcode .= "<input type='hidden' name='token' value='$token'>";
+        // // On stock le token dans la SESSION
+        // $_SESSION['token'] = $token;
+        
         // On ajoute la balise fermante
         $this->formcode .= "</form>";
         return $this;

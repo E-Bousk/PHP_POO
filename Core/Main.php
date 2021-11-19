@@ -11,6 +11,9 @@ class Main
 {
     public function start()
     {
+        // On démarre la SESSION
+        session_start();
+
         // *** On retire le "trailing slash" éventuel de l'URL (le slash à la fin de l'URL) ***
 
         // On récupère l'URL
