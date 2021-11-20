@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 20 nov. 2021 à 14:53
+-- Généré le : sam. 20 nov. 2021 à 15:23
 -- Version du serveur :  5.7.33
 -- Version de PHP : 7.4.19
 
@@ -29,37 +29,37 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `annonces` (
   `id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `actif` tinyint(1) NOT NULL DEFAULT '0',
-  `users_id` int(11) NOT NULL
+  `actif` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `annonces`
 --
 
-INSERT INTO `annonces` (`id`, `titre`, `description`, `created_at`, `actif`, `users_id`) VALUES
-(1, 'Titre de l\'annonce', 'Description de l\'annonce', '2021-11-01 00:00:00', 1, 2),
-(2, 'Titre lorem', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, nulla itaque! Repellat ipsa, cumque soluta asperiores quaerat doloribus non eum saepe voluptates reiciendis illo architecto dolorem obcaecati illum? Nisi, praesentium?', '2021-11-05 00:00:00', 1, 1),
-(3, 'Nouannonce', 'Doloribus nemo laboriosam quibusdam ipsa natus, totam alias reiciendis adipisci, qui modi earum minus! Nulla excepturi, distinctio aliquam consequuntur magnam non, doloribus aliquid illo modi deserunt suscipit nisi. Labore, non.', '2021-11-15 13:51:29', 1, 1),
-(4, 'Velle anno', 'Sit repellendus quidem doloribus assumenda architecto eius sapiente? Praesentium modi ea nisi quae cumque, in nostrum molestiae, fugit a non quia architecto facere perspiciatis commodi fuga temporibus nulla reiciendis! Ab!', '2021-11-15 13:52:01', 1, 1),
-(5, 'Ngfle anigce', 'Tempore, fugit recusandae. Iusto minima distinctio tempora deserunt odit nihil, perferendis quam explicabo sint natus consequuntur, itaque corrupti rerum tenetur ducimus nam laboriosam a veniam. Quis quod harum incidunt porro.', '2021-11-15 13:52:02', 1, 1),
-(6, 'ProblÃ¨me d\'apostrophe rÃ©solu', 'Maiores, explica\'bo reiciendis quas officiis obcaecati vitae perferendis? Omnis optio officiis nulla porro voluptatibus cumque laudantium totam accusamus?', '2021-11-15 13:54:33', 1, 1),
-(7, 'Nouvelle annonce 2', 'Dignissimos numquam quibusdam eveniet pariatur unde tempore, temporibus quod ipsum molestias quos inventore, modi cum earum officia doloribus, fuga alias eaque. Praesentium odit inventore quis ratione commodi voluptatibus voluptates architecto?', '2021-11-15 13:58:37', 1, 1),
-(8, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 14:34:32', 1, 1),
-(9, 'Update', 'On modifie par la mÃ©thode UPDATE', '2021-11-15 14:34:45', 1, 2),
-(10, 'Update 2', 'On modifie par la mÃ©thode UPDATE', '2021-11-15 14:35:12', 1, 2),
-(11, 'Annonce modifiÃ©e', 'On modifie encore par la mÃ©thode UPDATE', '2021-11-15 14:35:14', 1, 2),
-(14, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:12', 1, 2),
-(15, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:25', 1, 2),
-(16, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:25', 1, 2),
-(17, 'Test titre annonce', ',hj,h,j;jh;hj;', '2021-11-19 19:38:07', 0, 1),
-(18, 'Test titre annonce', 'dcscsdcdscds', '2021-11-19 19:40:55', 0, 1),
-(19, 'Un titre de l\'annonce', 'dfffqsfqffqff', '2021-11-19 19:54:54', 0, 1),
-(20, 'Un titre de l\'annonce', 'dsvdvsvqsdvdqsvvsq', '2021-11-19 20:00:11', 0, 1),
-(21, 'Test titre annonce', 'dvsvqsv', '2021-11-19 20:00:40', 0, 1);
+INSERT INTO `annonces` (`id`, `users_id`, `titre`, `description`, `created_at`, `actif`) VALUES
+(1, 2, 'Titre de l\'annonce', 'Description de l\'annonce', '2021-11-01 00:00:00', 1),
+(2, 1, 'Titre lorem', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, nulla itaque! Repellat ipsa, cumque soluta asperiores quaerat doloribus non eum saepe voluptates reiciendis illo architecto dolorem obcaecati illum? Nisi, praesentium?', '2021-11-05 00:00:00', 1),
+(3, 1, 'Nouannonce', 'Doloribus nemo laboriosam quibusdam ipsa natus, totam alias reiciendis adipisci, qui modi earum minus! Nulla excepturi, distinctio aliquam consequuntur magnam non, doloribus aliquid illo modi deserunt suscipit nisi. Labore, non.', '2021-11-15 13:51:29', 1),
+(4, 1, 'Velle anno', 'Sit repellendus quidem doloribus assumenda architecto eius sapiente? Praesentium modi ea nisi quae cumque, in nostrum molestiae, fugit a non quia architecto facere perspiciatis commodi fuga temporibus nulla reiciendis! Ab!', '2021-11-15 13:52:01', 1),
+(5, 1, 'Ngfle anigce', 'Tempore, fugit recusandae. Iusto minima distinctio tempora deserunt odit nihil, perferendis quam explicabo sint natus consequuntur, itaque corrupti rerum tenetur ducimus nam laboriosam a veniam. Quis quod harum incidunt porro.', '2021-11-15 13:52:02', 1),
+(6, 1, 'ProblÃ¨me d\'apostrophe rÃ©solu', 'Maiores, explica\'bo reiciendis quas officiis obcaecati vitae perferendis? Omnis optio officiis nulla porro voluptatibus cumque laudantium totam accusamus?', '2021-11-15 13:54:33', 1),
+(7, 1, 'Nouvelle annonce 2', 'Dignissimos numquam quibusdam eveniet pariatur unde tempore, temporibus quod ipsum molestias quos inventore, modi cum earum officia doloribus, fuga alias eaque. Praesentium odit inventore quis ratione commodi voluptatibus voluptates architecto?', '2021-11-15 13:58:37', 1),
+(8, 1, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 14:34:32', 1),
+(9, 2, 'Update', 'On modifie par la mÃ©thode UPDATE', '2021-11-15 14:34:45', 1),
+(10, 2, 'Update 2', 'On modifie par la mÃ©thode UPDATE', '2021-11-15 14:35:12', 1),
+(11, 2, 'Annonce modifiÃ©e', 'On modifie encore par la mÃ©thode UPDATE', '2021-11-15 14:35:14', 1),
+(14, 2, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:12', 1),
+(15, 2, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:25', 1),
+(16, 2, 'Ajout par hydratation', 'On insert par une mÃ©thode d\'hydratation', '2021-11-15 15:15:25', 1),
+(17, 1, 'Test titre annonce', ',hj,h,j;jh;hj;', '2021-11-19 19:38:07', 0),
+(18, 1, 'Test titre annonce', 'dcscsdcdscds', '2021-11-19 19:40:55', 0),
+(19, 1, 'Un titre de l\'annonce', 'dfffqsfqffqff', '2021-11-19 19:54:54', 0),
+(20, 1, 'Un titre de l\'annonce', 'dsvdvsvqsdvdqsvvsq', '2021-11-19 20:00:11', 0),
+(21, 1, 'Test titre annonce', 'dvsvqsv', '2021-11-19 20:00:40', 0);
 
 -- --------------------------------------------------------
 
@@ -70,16 +70,17 @@ INSERT INTO `annonces` (`id`, `titre`, `description`, `created_at`, `actif`, `us
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL
+  `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `roles` json DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(1, 'email@email.com', '$argon2i$v=19$m=65536,t=4,p=1$ZlBYUmFhQURxWTNxMGU4eQ$EB3P608zVz4H3DxKRJyo9WatQcN6+3DlJhAZn273Nlk'),
-(2, 'another_email@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$OWFjUC4zMGpRYjRtdTFyZg$Qd5J1ujtPgQxi122WXwd82NcMlcJHHDNnUAoUF2sgsg');
+INSERT INTO `users` (`id`, `email`, `password`, `roles`) VALUES
+(1, 'admin@email.com', '$argon2i$v=19$m=65536,t=4,p=1$ZlBYUmFhQURxWTNxMGU4eQ$EB3P608zVz4H3DxKRJyo9WatQcN6+3DlJhAZn273Nlk', '[\"ROLE_ADMIN\"]'),
+(2, 'another_email@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$OWFjUC4zMGpRYjRtdTFyZg$Qd5J1ujtPgQxi122WXwd82NcMlcJHHDNnUAoUF2sgsg', NULL);
 
 --
 -- Index pour les tables déchargées

@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\Form;
 use App\Models\AnnoncesModel;
-use DateTime;
 
 class AnnoncesController extends Controller
 {
@@ -136,11 +135,13 @@ class AnnoncesController extends Controller
                 exit;
             }
             
-            // On vérifie si l'utilisateur est le rédacteur de l'annonce
+            // On vérifie si l'utilisateur est le rédacteur de l'annonce ou s'il a le rôle ADMIN
             if($annonce->users_id !== $_SESSION['user']['id']) {
-                $_SESSION['error'] = "Vous n'avez pas les droits sur cette annonce";
-                header('Location: /annonces');
-                exit;
+                if(!in_array('ROLE_ADMIN', $_SESSION['user']['roles'])) {
+                    $_SESSION['error'] = "Vous n'avez pas les droits sur cette annonce";
+                    header('Location: /annonces');
+                    exit;
+                }
             }
 
             // On traite le formulaire
