@@ -56,8 +56,9 @@ class Form
                 // On l'ajoute
                 $str .= " $attribut";
             } else {
-                // On ajoute « attribut = 'valeur' »
-                $str .= " $attribut='$value'";
+                // On ajoute « attribut = "valeur" »
+                // <!> On met des « double quote » pour pouvoir utiliser un apostrophe le cas échéant
+                $str .= " $attribut=\"$value\"";
             }
         }
         return $str;
@@ -182,7 +183,7 @@ class Form
 
         // On ajoute chacune des options
         foreach($options as $valeur => $text) {
-            $this->formcode .= "<option value='$valeur'>$text</option>";
+            $this->formcode .= "<option value=\"$valeur\">$text</option>";
         }
 
         // On ajoute la balise fermante

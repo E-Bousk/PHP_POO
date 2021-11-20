@@ -24,7 +24,7 @@ class UsersController extends Controller
             // Si l'utilisateur n'existe pas
             if(!$userArray) {
                 // On envoie un message de session
-                $_SESSION['erreur'] = "L'adresse e-mail et/ou le mot de passe est incorrect";
+                $_SESSION['error'] = "L'adresse e-mail et/ou le mot de passe est incorrect";
                 header('Location: /users/login');
                 exit;
             }
@@ -44,7 +44,7 @@ class UsersController extends Controller
                 exit;
             } else {
                 // mauvais mot de passe
-                $_SESSION['erreur'] = "L'adresse e-mail et/ou le mot de passe est incorrect";
+                $_SESSION['error'] = "L'adresse e-mail et/ou le mot de passe est incorrect";
                 header('Location: /users/login');
                 exit;
             }
