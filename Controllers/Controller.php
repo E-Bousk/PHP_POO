@@ -2,8 +2,23 @@
 
 namespace App\Controllers;
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
 abstract class Controller
 {
+    private $loader;
+    protected $twig;
+
+    public function __construct()
+    {
+        // Paramètre le dossier contenant les templates
+        $this->loader = new FilesystemLoader(ROOT.'/templates');
+
+        // Paramètre l'envrionnement TWIG
+        $this->twig = new Environment($this->loader);
+    }
+    
     public function render(string $file, array $data = [], string $template = 'default')
     {
         // On extrait le contenu de '$data'

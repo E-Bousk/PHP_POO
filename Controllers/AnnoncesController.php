@@ -14,9 +14,12 @@ class AnnoncesController extends Controller
      */
     public function index()
     {
-        $annonces = (new AnnoncesModel)->findBy(['actif' => 1]);
+        // $annonces = (new AnnoncesModel)->findBy(['actif' => 1]);
         
-        $this->render('annonces/index', compact('annonces'));
+        // $this->render('annonces/index', compact('annonces'));
+        
+        $annonces = (new AnnoncesModel)->findAll();
+        $this->twig->display('annonce/index.html.twig', compact('annonces'));
     }
 
     /**
